@@ -1,6 +1,6 @@
 {
-    "name": "@donmahallem/flowapi",
-    "version": "2.1.0-alpha3",
+    "name": "@donmahallem/flowcli",
+    "version": "0.0.1",
     "description": "",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -72,10 +72,8 @@
         "all": true
     },
     "dependencies": {
-        "jsonschema": "^1.2.4",
-        "querystring": "^0.2.0",
-        "request": "^2.88.0",
-        "set-cookie-parser": "^2.2.1"
+        "@donmahallem/flowapi": "^2.1.0-alpha3",
+        "nconf": "^0.10.0"
     },
     "files": [
         "dist/*",

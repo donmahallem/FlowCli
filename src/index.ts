@@ -1,5 +1,4 @@
-export * from "./flow-api-client";
+import { CliApp } from './cli-app';
 
-export * from "./flow-api-validator";
-export * from "./summary-merger";
-export * from "./model";
+const app: CliApp = new CliApp();
+app.start();
