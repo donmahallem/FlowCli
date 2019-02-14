@@ -79,5 +79,9 @@
     "files": [
         "dist/*",
         "src/*"
-    ]
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/donmahallem/FlowCli.git"
+    }
 }
