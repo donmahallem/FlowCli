@@ -3,6 +3,10 @@ import * as yargs from 'yargs';
 export class CliApp {
     private args: yargs.Argv;
     constructor() {
+        this.init();
+    }
+
+    public init(): void {
         // Init as described in: https://github.com/yargs/yargs/blob/master/docs/advanced.md#using-the-non-singleton-interface
         this.args = yargs((process.argv.slice(2)))
             .command('download heartrate <startdate> [enddate]', 'the serve command', (args: yargs.Argv) => {
@@ -47,7 +51,6 @@ export class CliApp {
             })
             .demandOption(['email', 'password'], 'Please provide both run and path arguments to work with this tool')
             .help();
-        console.log(this.args.argv);
     }
     public start(): void {
 
