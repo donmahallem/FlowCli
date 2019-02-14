@@ -73,7 +73,8 @@
     },
     "dependencies": {
         "@donmahallem/flowapi": "^2.1.0-alpha3",
-        "nconf": "^0.10.0"
+        "nconf": "^0.10.0",
+        "yargs": "^13.1.0"
     },
     "files": [
         "dist/*",
