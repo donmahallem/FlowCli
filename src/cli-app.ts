@@ -22,6 +22,10 @@ export class CliApp {
                     demand: true,
                     type: 'string',
                     description: 'A date formated like 2019-10-12'
+                }).option('throttle', {
+                    default: 1000,
+                    type: 'number',
+                    description: 'The throttle in ms between every request to the flow.polar.com backend'
                 });
 
             }, (argv) => {
