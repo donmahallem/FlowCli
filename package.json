@@ -73,6 +73,7 @@
     },
     "dependencies": {
         "@donmahallem/flowapi": "^2.1.0-alpha3",
+        "@types/yargs": "^12.0.9",
         "yargs": "^13.1.0"
     },
     "files": [
