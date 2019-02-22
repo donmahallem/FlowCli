@@ -1,11 +1,15 @@
 export class FlowDate {
 
-    private date: Date;
+    private _date: Date;
     public constructor(year: number, month: number, day: number) {
-        this.date = new Date();
+        //Prime everything with zeros so no errors occur
+        this._date = new Date(0, 0, 0, 0, 0, 0, 0);
         this.date.setFullYear(year, month - 1, day);
     }
 
+    public get date(): Date {
+        return this._date;
+    }
     public get year(): number {
         return this.date.getFullYear();
     }
