@@ -41,4 +41,12 @@ export class FlowDate {
         tomorrow.setDate(tomorrow.getDate() + 1);
         return new FlowDate(tomorrow.getFullYear(), tomorrow.getMonth() + 1, tomorrow.getDate());
     }
+
+    public distance(diffDate: FlowDate): number {
+        const one_day = 1000 * 60 * 60 * 24;
+        const date1_ms = this.date.getTime();
+        const date2_ms = diffDate.date.getTime();
+        const difference_ms = date2_ms - date1_ms;
+        return Math.round(difference_ms / one_day);
+    }
 }
