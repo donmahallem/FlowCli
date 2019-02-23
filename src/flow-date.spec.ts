@@ -68,6 +68,31 @@ describe("flow-date.ts", () => {
                 });
             });
         });
+        describe('toDateArray(FlowDate,FlowDate)', () => {
+            const date1: testObject.FlowDate = new testObject.FlowDate(2019, 2, 24);
+            const date2: testObject.FlowDate = new testObject.FlowDate(2019, 3, 2);
+            const resultDates: testObject.FlowDate[] = [
+                new testObject.FlowDate(2019, 2, 24),
+                new testObject.FlowDate(2019, 2, 25),
+                new testObject.FlowDate(2019, 2, 26),
+                new testObject.FlowDate(2019, 2, 27),
+                new testObject.FlowDate(2019, 2, 28),
+                new testObject.FlowDate(2019, 3, 1),
+                new testObject.FlowDate(2019, 3, 2),
+            ];
+            it('should work for dates forwards', () => {
+                const result: testObject.FlowDate[] = testObject.FlowDate.toDateArray(date1, date2);
+                expect(result).to.contain.deep.equal(resultDates);
+            });
+            it('should work for dates backwards', () => {
+                const result: testObject.FlowDate[] = testObject.FlowDate.toDateArray(date2, date1);
+                expect(result).to.contain.deep.equal(resultDates.reverse());
+            });
+            it('should work for equal dates', () => {
+                const result: testObject.FlowDate[] = testObject.FlowDate.toDateArray(date1, date1);
+                expect(result).to.contain.deep.equal([date1]);
+            });
+        });
     });
     describe('class methods', () => {
         describe("get date", () => {

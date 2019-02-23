@@ -30,6 +30,21 @@ export class FlowDate {
         return new FlowDate(year, month, day);
     }
 
+    public static toDateArray(startDate: FlowDate, endDate: FlowDate): FlowDate[] {
+        if (startDate.distance(endDate) === 0) {
+            return [startDate];
+        }
+        const dates: FlowDate[] = [];
+        let nextDate: FlowDate = startDate;
+        const walkUpwards: boolean = startDate.distance(endDate) > 0;
+        do {
+            dates.push(nextDate);
+            nextDate = walkUpwards ? nextDate.nextDay() : nextDate.previousDay();
+        } while (nextDate.distance(endDate) != 0);
+        dates.push(endDate);
+        return dates;
+    }
+
     public toString(): string {
         let output: string = "";
         output += ("" + this.year).padStart(4, "0");
@@ -44,6 +59,12 @@ export class FlowDate {
         const tomorrow: Date = new Date(this.date);
         tomorrow.setDate(tomorrow.getDate() + 1);
         return new FlowDate(tomorrow.getFullYear(), tomorrow.getMonth() + 1, tomorrow.getDate());
+    }
+
+    public previousDay(): FlowDate {
+        const yesterday: Date = new Date(this.date);
+        yesterday.setDate(yesterday.getDate() - 1);
+        return new FlowDate(yesterday.getFullYear(), yesterday.getMonth() + 1, yesterday.getDate());
     }
 
     public distance(diffDate: FlowDate): number {
