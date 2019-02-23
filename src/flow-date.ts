@@ -1,5 +1,15 @@
 export class FlowDate {
 
+    private mDate: Date;
+    public constructor(year: number, month: number, day: number) {
+        //Prime everything with zeros so no errors occur
+        this.mDate = new Date(0, 0, 0, 0, 0, 0, 0);
+        this.date.setFullYear(year, month - 1, day);
+    }
+
+    public get date(): Date {
+        return this.mDate;
+    }
     public get year(): number {
         return this.date.getFullYear();
     }
@@ -18,12 +28,6 @@ export class FlowDate {
         const month: number = parseInt(splits[1], 10);
         const day: number = parseInt(splits[2], 10);
         return new FlowDate(year, month, day);
-    }
-
-    private date: Date;
-    public constructor(year: number, month: number, day: number) {
-        this.date = new Date();
-        this.date.setFullYear(year, month - 1, day);
     }
 
     public toString(): string {
