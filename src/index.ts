@@ -1,24 +1,25 @@
-import * as yargs from 'yargs';
-import { CliApp } from './cli-app';
-import { HeartRateDownloader } from './heartrate-downloader';
-yargs((process.argv.slice(2)))
-    .command('download heartrate <startdate> [enddate]', 'the serve command', (args: yargs.Argv) => {
-        return yargs.option('samples', {
+import * as yargs from "yargs";
+import { CliApp } from "./cli-app";
+import { HeartRateDownloader } from "./heartrate-downloader";
+
+const inputArgs = yargs((process.argv.slice(2)))
+    .command("download heartrate <startdate> [enddate]", "the serve command", (args: yargs.Argv) => {
+        return yargs.option("samples", {
             default: 50000,
-            type: 'number',
-            description: 'The number of samples for heartrate to download'
-        }).option('enddate', {
+            description: "The number of samples for heartrate to download",
+            type: "number",
+        }).option("enddate", {
             demand: false,
-            type: 'string',
-            description: 'A date formated like 2019-10-12'
-        }).option('startdate', {
+            description: "A date formated like 2019-10-12",
+            type: "string",
+        }).option("startdate", {
             demand: true,
-            type: 'string',
-            description: 'A date formated like 2019-10-12'
-        }).option('throttle', {
+            description: "A date formated like 2019-10-12",
+            type: "string",
+        }).option("throttle", {
             default: 1000,
-            type: 'number',
-            description: 'The throttle in ms between every request to the flow.polar.com backend'
+            description: "The throttle in ms between every request to the flow.polar.com backend",
+            type: "number",
         });
 
     }, (argv) => {
@@ -39,15 +40,16 @@ yargs((process.argv.slice(2)))
             app.download(argv.startdate, argv.samples);
         }
     })
-    .option('password', {
-        'string': true,
+    .option("password", {
         demand: true,
-        description: 'The password you use to login to flow.polar.com'
+        description: "The password you use to login to flow.polar.com",
+        string: true,
     })
-    .option('email', {
-        'string': true,
+    .option("email", {
         demand: true,
-        description: 'The email you use to login to flow.polar.com'
+        description: "The email you use to login to flow.polar.com",
+        string: true,
     })
-    .demandOption(['email', 'password'], 'Please provide both run and path arguments to work with this tool')
-    .help().argv;
+    .demandOption(["email", "password"], "Please provide both run and path arguments to work with this tool")
+    .help()
+    .argv;
