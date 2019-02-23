@@ -112,6 +112,16 @@ describe("flow-date.ts", () => {
                 });
             });
         });
+        describe("previousDay()", () => {
+            testDays.forEach((testDate) => {
+                it('it should skip correctly from ' + testDate.from.toString() + ' to ' + testDate.to.toString(), () => {
+                    const calculatedDate: testObject.FlowDate = testDate.to.previousDay();
+                    expect(calculatedDate.day).to.equal(testDate.from.day);
+                    expect(calculatedDate.month).to.equal(testDate.from.month);
+                    expect(calculatedDate.year).to.equal(testDate.from.year);
+                });
+            });
+        });
         describe('toString()', () => {
             testDays.forEach((testDate) => {
                 it('should format ' + testDate.date + ' to ' + testDate.str, () => {
