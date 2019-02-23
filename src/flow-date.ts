@@ -1,27 +1,5 @@
 export class FlowDate {
 
-    private mDate: Date;
-    public constructor(year: number, month: number, day: number) {
-        //Prime everything with zeros so no errors occur
-        this.mDate = new Date(0, 0, 0, 0, 0, 0, 0);
-        this.date.setFullYear(year, month - 1, day);
-    }
-
-    public get date(): Date {
-        return this.mDate;
-    }
-    public get year(): number {
-        return this.date.getFullYear();
-    }
-
-    public get month(): number {
-        return this.date.getMonth() + 1;
-    }
-
-    public get day(): number {
-        return this.date.getDate();
-    }
-
     public static fromString(input: string): FlowDate {
         const splits: string[] = input.split("-");
         const year: number = parseInt(splits[0], 10);
@@ -40,9 +18,32 @@ export class FlowDate {
         do {
             dates.push(nextDate);
             nextDate = walkUpwards ? nextDate.nextDay() : nextDate.previousDay();
-        } while (nextDate.distance(endDate) != 0);
+        } while (nextDate.distance(endDate) !== 0);
         dates.push(endDate);
         return dates;
+    }
+
+    private mDate: Date;
+
+    public constructor(year: number, month: number, day: number) {
+        // Prime everything with zeros so no errors occur
+        this.mDate = new Date(0, 0, 0, 0, 0, 0, 0);
+        this.date.setFullYear(year, month - 1, day);
+    }
+
+    public get date(): Date {
+        return this.mDate;
+    }
+    public get year(): number {
+        return this.date.getFullYear();
+    }
+
+    public get month(): number {
+        return this.date.getMonth() + 1;
+    }
+
+    public get day(): number {
+        return this.date.getDate();
     }
 
     public toString(): string {
