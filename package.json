@@ -78,7 +78,7 @@
         "@donmahallem/flow-api-types": "^2.2.0",
         "@donmahallem/flowapi": "^4.1.0",
         "@types/yargs": "^13.0.2",
-        "yargs": "^13.3.0"
+        "yargs": "^14.0.0"
     },
     "files": [
         "dist/*",
