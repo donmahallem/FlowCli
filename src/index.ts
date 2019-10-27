@@ -1,7 +1,10 @@
+import { FlowApiClient } from "@donmahallem/flowapi";
 import * as yargs from "yargs";
 import { CliApp } from "./cli-app";
 import { HeartRateDownloader } from "./heartrate-downloader";
+import { createSignInMiddleware } from "./signin-middleware";
 
+const flowClientInstance: FlowApiClient = new FlowApiClient();
 const inputArgs = yargs((process.argv.slice(2)))
     .command("download heartrate <startdate> [enddate]", "the serve command", (args: yargs.Argv) => {
         return yargs.option("samples", {
@@ -50,6 +53,7 @@ const inputArgs = yargs((process.argv.slice(2)))
         description: "The email you use to login to flow.polar.com",
         string: true,
     })
+    .middleware(createSignInMiddleware(flowClientInstance))
     .demandOption(["email", "password"], "Please provide both run and path arguments to work with this tool")
     .help()
     .argv;
