@@ -33,20 +33,20 @@
         "esModuleInterop": true
     },
     "devDependencies": {
-        "@types/chai": "^4.2.4",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.11.7",
-        "@types/set-cookie-parser": "0.0.5",
-        "@types/sinon": "^7.5.0",
-        "chai": "^4.2.0",
-        "mocha": "^6.2.2",
-        "nodemon": "^1.19.4",
-        "nyc": "^14.1.1",
-        "request-debug": "^0.2.0",
-        "sinon": "^7.5.0",
-        "ts-node": "^8.4.1",
-        "tslint": "^5.20.0",
-        "typescript": "^3.6.4"
+        "@types/chai": "~4.2.4",
+        "@types/mocha": "~5.2.7",
+        "@types/node": "~12.11.7",
+        "@types/set-cookie-parser": "~0.0.5",
+        "@types/sinon": "~7.5.0",
+        "chai": "~4.2.0",
+        "mocha": "~6.2.2",
+        "nodemon": "~1.19.4",
+        "nyc": "~14.1.1",
+        "request-debug": "~0.2.0",
+        "sinon": "~7.5.0",
+        "ts-node": "~8.4.1",
+        "tslint": "~5.20.0",
+        "typescript": "~3.6.4"
     },
     "nyc": {
         "include": [
@@ -75,10 +75,10 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "^2.3.0",
-        "@donmahallem/flowapi": "^4.1.0",
-        "@types/yargs": "^13.0.3",
-        "yargs": "^14.2.0"
+        "@donmahallem/flow-api-types": "~2.3.0",
+        "@donmahallem/flowapi": "~4.1.0",
+        "@types/yargs": "~13.0.3",
+        "yargs": "~14.2.0"
     },
     "files": [
         "dist/*",
