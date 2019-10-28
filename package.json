@@ -13,7 +13,11 @@
         "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
         "test-ci": "nyc npm run test",
         "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
-        "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts"
+        "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
+        "test:lint": "npm run lint",
+        "test:build": "npm run build",
+        "test:unit": "npm run test-ci",
+        "test:docs": "npm run docs"
     },
     "author": "",
     "license": "ISC",
