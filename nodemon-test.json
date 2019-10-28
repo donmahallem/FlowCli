@@ -1,0 +1,19 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+        "src/**/*.spec.ts"
+    ],
+    "exec": "ts-node ./src/index.ts",
+    "args": [
+        "download",
+        "heartrate",
+        "2019-10-12",
+        "2019-10-14",
+        "--email=polar@m.m0k.eu",
+        "--password=Hademini1!",
+        "../test"
+    ]
+}
