@@ -1,19 +1,36 @@
 language: node_js
 node_js:
   - "8"
-  - "9"
   - "10"
+  - "stable"
+env:
+  matrix:
+  - TEST_SUITE=lint
+  - TEST_SUITE=build
+  - TEST_SUITE=unit
+  - TEST_SUITE=docs
+matrix:
+  exclude:
+    - node_js: "8"
+      env: TEST_SUITE=lint
+    - node_js: "8"
+      env: TEST_SUITE=docs
+    - node_js: "8"
+      env: TEST_SUITE=build
+    - node_js: "10"
+      env: TEST_SUITE=lint
+    - node_js: "10"
+      env: TEST_SUITE=docs
+    - node_js: "10"
+      env: TEST_SUITE=build
 cache:
   directories:
   - node_modules
   - "$(npm config get prefix)/node_modules"
-before_install: npm install
 script:
-- npm run build
-- npm run test-ci
+- npm run test:$TEST_SUITE
 after_success:
-- npm install coveralls
-- cat ./coverage/lcov.info | coveralls -v
+- ./coveralls_upload.sh
 jobs:
   include:
   - stage: npm release
