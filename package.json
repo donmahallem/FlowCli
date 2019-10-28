@@ -14,6 +14,7 @@
         "test-ci": "nyc npm run test",
         "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
         "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
+        "docs": "typedoc --options typedoc.json",
         "test:lint": "npm run lint",
         "test:build": "npm run build",
         "test:unit": "npm run test-ci",
@@ -50,6 +51,7 @@
         "sinon": "~7.5.0",
         "ts-node": "~8.4.1",
         "tslint": "~5.20.0",
+        "typedoc": "~0.15.0",
         "typescript": "~3.6.4"
     },
     "nyc": {
