@@ -16,12 +16,9 @@ export class HeartRateDownloader {
         let currentDay: FlowDate = convStartDate;
         let map = {};
         while (currentDay.distance(convEndDate) >= 0) {
-            let aa = Date.now();
             map[currentDay.toString()] = await this.download(currentDay, samples);
-            console.log("TTT", Date.now() - aa, throttle)
             currentDay = currentDay.nextDay();
             await this.timeout(throttle);
-            console.log("Await", currentDay.toString());
         }
         return map;
     }
