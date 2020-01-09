@@ -77,7 +77,7 @@
     "dependencies": {
         "@donmahallem/flow-api-types": "~2.5.1",
         "@donmahallem/flowapi": "~5.1.0",
-        "@types/yargs": "~13.0.4",
+        "@types/yargs": "~15.0.0",
         "yargs": "~15.1.0"
     },
     "files": [
