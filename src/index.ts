@@ -1,7 +1,10 @@
 import * as yargs from "yargs";
 import { CliApp } from "./cli-app";
 import { HeartRateDownloader } from "./heartrate-downloader";
+import { FlowApiClient } from "@donmahallem/flowapi";
+import { createSignInMiddleware } from "./signin-middleware";
 
+const flowApiClient: FlowApiClient = new FlowApiClient();
 const inputArgs = yargs((process.argv.slice(2)))
     .command("download heartrate <startdate> [enddate]", "the serve command", (args: yargs.Argv) => {
         return yargs.option("samples", {
@@ -27,7 +30,7 @@ const inputArgs = yargs((process.argv.slice(2)))
         if (!dateRegex.test(argv.startdate)) {
             throw new Error("The provided startDate does not seem valid");
         }
-        const app: HeartRateDownloader = new HeartRateDownloader();
+        const app: HeartRateDownloader = new HeartRateDownloader(flowApiClient);
         if (argv.enddate) {
             if (!dateRegex.test(argv.enddate)) {
                 throw new Error("The provided endDate does not seem valid");
@@ -35,7 +38,7 @@ const inputArgs = yargs((process.argv.slice(2)))
             if (argv.startdate.localeCompare(argv.enddate) >= 0) {
                 throw new Error("Enddate must be after startdate");
             }
-            app.downloadRange(argv.startdate, argv.enddate, argv.samples, argv.samples);
+            app.downloadRange(argv.startdate, argv.enddate, argv.samples, argv.throttle).then((aa) => console.log(Object.keys(aa)));
         } else {
             app.download(argv.startdate, argv.samples);
         }
@@ -50,6 +53,7 @@ const inputArgs = yargs((process.argv.slice(2)))
         description: "The email you use to login to flow.polar.com",
         string: true,
     })
+    .middleware(createSignInMiddleware(flowApiClient))
     .demandOption(["email", "password"], "Please provide both run and path arguments to work with this tool")
     .help()
     .argv;
