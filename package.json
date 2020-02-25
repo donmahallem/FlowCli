@@ -37,7 +37,7 @@
         "@types/mocha": "~7.0.1",
         "@types/node": "~13.7.4",
         "@types/set-cookie-parser": "~0.0.6",
-        "@types/sinon": "~7.5.1",
+        "@types/sinon": "~7.5.2",
         "chai": "~4.2.0",
         "mocha": "~7.0.1",
         "nodemon": "~2.0.2",
