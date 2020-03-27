@@ -35,7 +35,7 @@
     "devDependencies": {
         "@types/chai": "~4.2.11",
         "@types/mocha": "~7.0.2",
-        "@types/node": "~13.9.4",
+        "@types/node": "~13.9.5",
         "@types/set-cookie-parser": "~0.0.6",
         "@types/sinon": "~7.5.2",
         "chai": "~4.2.0",
