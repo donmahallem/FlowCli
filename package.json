@@ -5,13 +5,15 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "test": "mocha --opts ./test/.mocha.opts",
+        "test": "mocha",
         "start": "npm run build:live",
         "build:live": "nodemon",
         "build": "tsc",
         "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
         "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
-        "test-ci": "nyc npm run test"
+        "test-ci": "nyc npm run test",
+        "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
+        "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts"
     },
     "author": "",
     "license": "ISC",
@@ -31,19 +33,20 @@
         "esModuleInterop": true
     },
     "devDependencies": {
-        "@types/chai": "^4.1.7",
-        "@types/mocha": "^5.2.6",
-        "@types/node": "^11.9.4",
-        "@types/set-cookie-parser": "0.0.4",
-        "@types/sinon": "^7.0.6",
-        "chai": "^4.2.0",
-        "mocha": "^5.2.0",
-        "nodemon": "^1.18.0",
-        "nyc": "^13.3.0",
-        "request-debug": "^0.2.0",
-        "sinon": "^7.2.2",
-        "ts-node": "^8.0.1",
-        "typescript": "^3.2.2"
+        "@types/chai": "~4.2.11",
+        "@types/mocha": "~7.0.2",
+        "@types/node": "~13.13.0",
+        "@types/set-cookie-parser": "~0.0.6",
+        "@types/sinon": "~7.5.2",
+        "chai": "~4.2.0",
+        "mocha": "~7.1.1",
+        "nodemon": "~2.0.3",
+        "nyc": "~15.0.1",
+        "request-debug": "~0.2.0",
+        "sinon": "~9.0.2",
+        "ts-node": "~8.8.2",
+        "tslint": "~6.1.1",
+        "typescript": "~3.8.3"
     },
     "nyc": {
         "include": [
@@ -72,9 +75,10 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flowapi": "^2.1.0-alpha3",
-        "@types/yargs": "^12.0.9",
-        "yargs": "^13.2.0"
+        "@donmahallem/flow-api-types": "~2.5.2",
+        "@donmahallem/flowapi": "~5.1.0",
+        "@types/yargs": "~15.0.4",
+        "yargs": "~15.3.1"
     },
     "files": [
         "dist/*",
